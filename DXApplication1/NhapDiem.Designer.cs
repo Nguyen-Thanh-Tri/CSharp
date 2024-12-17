@@ -189,6 +189,7 @@
             this.txtDiemCK.Name = "txtDiemCK";
             this.txtDiemCK.Size = new System.Drawing.Size(140, 20);
             this.txtDiemCK.TabIndex = 11;
+            this.txtDiemCK.TextChanged += new System.EventHandler(this.txtDiemCK_TextChanged);
             // 
             // txtDiemTB
             // 
@@ -204,6 +205,7 @@
             this.txtDiemGK.Name = "txtDiemGK";
             this.txtDiemGK.Size = new System.Drawing.Size(140, 20);
             this.txtDiemGK.TabIndex = 9;
+            this.txtDiemGK.TextChanged += new System.EventHandler(this.txtDiemGK_TextChanged);
             // 
             // txtDiemBT
             // 
@@ -211,6 +213,7 @@
             this.txtDiemBT.Name = "txtDiemBT";
             this.txtDiemBT.Size = new System.Drawing.Size(140, 20);
             this.txtDiemBT.TabIndex = 8;
+            this.txtDiemBT.TextChanged += new System.EventHandler(this.txtDiemBT_TextChanged);
             // 
             // txtDiemCC
             // 

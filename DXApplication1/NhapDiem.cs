@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace DXApplication1
 {
@@ -105,26 +106,151 @@ namespace DXApplication1
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow row in dgvDiem.Rows)
+            diem.sTenMH = cbbTenMH.Text;
+            diem.sMaHocKy = cbbMaHK.Text;
+            foreach (DataGridViewRow row in dgvDiem.Rows)
             {
-                string DiemCC = row.Cells[4].Value.ToString();
-                string DiemBT = row.Cells[5].Value.ToString();
-                string DiemGK = row.Cells[6].Value.ToString();
-                string DiemCK = row.Cells[7].Value.ToString();
+                diem.sMaSV = row.Cells[1].Value != null 
+                    ? row.Cells[1].Value.ToString() : string.Empty;
+                diem.sDiemCC = row.Cells[4].Value == null || row.Cells[4].Value == DBNull.Value
+                    ? (float?)null : Convert.ToSingle(row.Cells[4].Value);
+                diem.sDiemBT = row.Cells[5].Value == null || row.Cells[5].Value == DBNull.Value
+                    ? (float?)null : Convert.ToSingle(row.Cells[5].Value);
+                diem.sDiemGK = row.Cells[6].Value == null || row.Cells[6].Value == DBNull.Value
+                    ? (float?)null : Convert.ToSingle(row.Cells[6].Value);
+                diem.sDiemCK = row.Cells[7].Value == null || row.Cells[7].Value == DBNull.Value
+                    ? (float?)null : Convert.ToSingle(row.Cells[7].Value);
+                diem.sDiemTB = row.Cells[8].Value == null || row.Cells[8].Value == DBNull.Value
+                    ? (decimal?)null : (decimal)Math.Round(Convert.ToDecimal(row.Cells[8].Value), 1);
+
+                NhapDiemBLL.UpdateDiem(diem);
             }
+            MessageBox.Show("Thêm thành công", "Quản lý sinh viên", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            dgvDiem.DataSource = GetData.NHAPDIEM(diem);
+            txtDiemCC.TextChanged -= txtDiemCC_TextChanged;
+            txtDiemBT.TextChanged -= txtDiemBT_TextChanged;
+            txtDiemGK.TextChanged -= txtDiemGK_TextChanged;
+            txtDiemCK.TextChanged -= txtDiemCK_TextChanged;
+            txtMaSV.Clear();
+            txtHovaTen.Clear();
+            txtLop.Clear();
+            txtDiemCC.Clear();
+            txtDiemBT.Clear();
+            txtDiemGK.Clear();
+            txtDiemCK.Clear();
+            txtDiemTB.Clear();
+            txtDiemCC.TextChanged += txtDiemCC_TextChanged;
+            txtDiemBT.TextChanged += txtDiemBT_TextChanged;
+            txtDiemGK.TextChanged += txtDiemGK_TextChanged;
+            txtDiemCK.TextChanged += txtDiemCK_TextChanged;
         }
 
         private void txtDiemCC_TextChanged(object sender, EventArgs e)
         {
-            updatedgv(txtDiemCC.Text, 4);
-        }
-        private void updatedgv(object a,int b)
-        {
-            if(dgvDiem.SelectedRows.Count > 0)
+            if(string.IsNullOrEmpty(txtDiemCC.Text))
             {
-                int rowIndex = dgvDiem.SelectedRows[2].Index;
-                dgvDiem.Rows[rowIndex].Cells[b].Value = a;
+                updatedgv(DBNull.Value, 4);
             }
+            else
+            {
+                updatedgv1(txtDiemCC.Text, 4);
+            }
+            AcgDiemTB();
+        }
+
+        private void txtDiemBT_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDiemBT.Text))
+            {
+                updatedgv(DBNull.Value, 5);
+            }
+            else
+            {
+                updatedgv1(txtDiemBT.Text, 5);
+            }
+            AcgDiemTB();
+        }
+
+        private void txtDiemGK_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDiemGK.Text))
+            {
+                updatedgv(DBNull.Value, 6);
+            }
+            else
+            {
+                updatedgv1(txtDiemGK.Text, 6);
+            }
+            AcgDiemTB();
+        }
+
+        private void txtDiemCK_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDiemCK.Text))
+            {
+                updatedgv(DBNull.Value, 7);
+            }
+            else
+            {
+                updatedgv1(txtDiemCK.Text, 7);
+            }
+            AcgDiemTB();
+        }
+
+        private void updatedgv(object a, int b)
+        {
+            try
+            {
+                if (dgvDiem.CurrentRow != null)
+                {
+
+                    dgvDiem.CurrentRow.Cells[b].Value = a;
+                }
+            }
+            catch { }
+
+        }
+        private void updatedgv1(string a, int b)
+        {
+            try
+            {
+                if (dgvDiem.CurrentRow != null)
+                {
+
+                    dgvDiem.CurrentRow.Cells[b].Value = a;
+                }
+            }
+            catch { }
+
+        }
+
+        private void AcgDiemTB()
+        {
+            if (!string.IsNullOrEmpty(txtDiemCC.Text) &&
+                !string.IsNullOrEmpty(txtDiemBT.Text) &&
+                !string.IsNullOrEmpty(txtDiemGK.Text) &&
+                !string.IsNullOrEmpty(txtDiemCK.Text))
+            {
+                try
+                {
+                    double diemcc = Convert.ToDouble(txtDiemCC.Text);
+                    double diembt = Convert.ToDouble(txtDiemBT.Text);
+                    double diemgk = Convert.ToDouble(txtDiemGK.Text);
+                    double diemck = Convert.ToDouble(txtDiemCK.Text);
+
+                    double diemtb = 0.15 * diemcc + 0.15 * diembt + 0.25 * diemgk + 0.45 * diemck;
+                    txtDiemTB.Text = diemtb.ToString("F1");
+                    updatedgv1(txtDiemTB.Text, 8);
+                }
+                catch
+                {
+
+                }
+            }
+            else
+            {
+                txtDiemCK.Text = string.Empty;
+            }   
         }
     }
 }
