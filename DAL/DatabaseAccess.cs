@@ -175,7 +175,7 @@ namespace DAL
         {
             SqlConnection conn = SqlConnectionData.Connect();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("SELECT sMaMH, sTenMH FROM tbl_Diem", conn);
+            SqlCommand cmd = new SqlCommand("SELECT sMaMH, sTenMH FROM tbl_Diem ORDER BY sMaMH, sTenMH", conn);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable ds = new DataTable();
             adapter.Fill(ds);
@@ -193,5 +193,59 @@ namespace DAL
             return ds;
         }
 
+        public static DataTable DSSV1(SinhVien sv)
+        {
+            SqlConnection conn = SqlConnectionData.Connect();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(@"SELECT ROW_NUMBER() OVER (ORDER BY PK_sMaSv) AS STT, PK_sMaSv AS [Mã sinh viên], sHovaTen AS [Họ và Tên], CASE WHEN sGioiTinh = '1' THEN 'Nam' ELSE N'Nữ' END AS [Giới tính], sLop AS [Lớp], sKhoa as [Khoa] FROM tbl_SinhVien WHERE deleted_at IS NULL AND sLop=@Lop", conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            cmd.Parameters.AddWithValue("@Lop", sv.sLop);
+            DataTable ds = new DataTable();
+            adapter.Fill(ds);
+            return ds;
+        }
+        public static DataTable DSSV2()
+        {
+            SqlConnection conn = SqlConnectionData.Connect();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(@"SELECT sTenMH FROM tbl_Diem ORDER BY sTenMH", conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable ds = new DataTable();
+            adapter.Fill(ds);
+            return ds;
+        }
+        public static DataTable DSSV3()
+        {
+            SqlConnection conn = SqlConnectionData.Connect();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(@"SELECT sLop, sKhoa FROM tbl_SinhVien ORDER BY sKhoa", conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable ds = new DataTable();
+            adapter.Fill(ds);
+            return ds;
+        }
+
+        public static DataTable DSSVDiem(sNhapDiem diem)
+        {
+            SqlConnection conn = SqlConnectionData.Connect();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("SELECT ROW_NUMBER() OVER (ORDER BY sMaSV) AS STT, sMaSV AS [Mã sinh viên], sHovaTen  AS [Họ và Tên], sLop AS [Lớp], sDiemCC AS [Điểm chuyên cần], sDiemBT AS [Điểm bài tập], sDiemGK AS [Điểm giữa kỳ], sDiemCK AS [Điểm cuối kỳ], sDiemTB  AS [Điểm trung bình], sMaHocKy  AS [Học kỳ], sTenMH  AS [Học phần] FROM tbl_Diem WHERE sTenMH=@TenMH", conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            cmd.Parameters.AddWithValue("@TenMH", diem.sTenMH);
+            DataTable ds = new DataTable();
+            adapter.Fill(ds);
+            return ds;
+        }   
+        public static DataTable DSSVKhoa(SinhVien sv)
+        {
+            SqlConnection conn = SqlConnectionData.Connect();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("SELECT ROW_NUMBER() OVER (ORDER BY PK_sMaSv) AS STT, PK_sMaSv AS [Mã sinh viên], sHovaTen AS [Họ và Tên], CASE WHEN sGioiTinh = '1' THEN 'Nam' ELSE N'Nữ' END AS [Giới tính], sLop AS [Lớp], sKhoa as [Khoa] FROM tbl_SinhVien WHERE deleted_at IS NULL AND sKhoa=@Khoa", conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            cmd.Parameters.AddWithValue("@Khoa", sv.sKhoa);
+            DataTable ds = new DataTable();
+            adapter.Fill(ds);
+            return ds;
+        }
     }
 }

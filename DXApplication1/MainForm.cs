@@ -124,5 +124,16 @@ namespace DXApplication1
             container.Controls.Add(f);
             f.Show();
         }
+
+        private void In_Click(object sender, EventArgs e)
+        {
+            DSSV f = new DSSV();
+            f.TopLevel = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Fill;
+            container.Controls.Clear();
+            container.Controls.Add(f);
+            f.Show();
+        }
     }
 }

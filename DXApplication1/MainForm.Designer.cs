@@ -38,7 +38,7 @@
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.ThemMonHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.ư = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.Sua_XoaMonHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement17 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement18 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -47,7 +47,7 @@
             this.Lop = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement9 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement19 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement20 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.In = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement11 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement12 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
@@ -130,7 +130,7 @@
             // 
             this.accordionControlElement6.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.ThemMonHoc,
-            this.ư});
+            this.Sua_XoaMonHoc});
             this.accordionControlElement6.Expanded = true;
             this.accordionControlElement6.Name = "accordionControlElement6";
             this.accordionControlElement6.Text = "Quản Lý Môn Học";
@@ -142,12 +142,12 @@
             this.ThemMonHoc.Text = "Thêm môn học";
             this.ThemMonHoc.Click += new System.EventHandler(this.ThemMonHoc_Click);
             // 
-            // ư
+            // Sua_XoaMonHoc
             // 
-            this.ư.Name = "ư";
-            this.ư.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ư.Text = "Sửa/Xóa môn học";
-            this.ư.Click += new System.EventHandler(this.Sua_XoaMonHoc_Click);
+            this.Sua_XoaMonHoc.Name = "Sua_XoaMonHoc";
+            this.Sua_XoaMonHoc.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.Sua_XoaMonHoc.Text = "Sửa/Xóa môn học";
+            this.Sua_XoaMonHoc.Click += new System.EventHandler(this.Sua_XoaMonHoc_Click);
             // 
             // accordionControlElement8
             // 
@@ -195,7 +195,7 @@
             // 
             this.accordionControlElement9.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement19,
-            this.accordionControlElement20});
+            this.In});
             this.accordionControlElement9.Expanded = true;
             this.accordionControlElement9.Name = "accordionControlElement9";
             this.accordionControlElement9.Text = "Báo Cáo Thống Kê";
@@ -206,11 +206,12 @@
             this.accordionControlElement19.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement19.Text = "Tìm kiếm";
             // 
-            // accordionControlElement20
+            // In
             // 
-            this.accordionControlElement20.Name = "accordionControlElement20";
-            this.accordionControlElement20.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement20.Text = "In danh sách sinh viên";
+            this.In.Name = "In";
+            this.In.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.In.Text = "In danh sách sinh viên";
+            this.In.Click += new System.EventHandler(this.In_Click);
             // 
             // accordionControlElement11
             // 
@@ -353,14 +354,14 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement10;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
         private DevExpress.XtraBars.Navigation.AccordionControlElement ThemMonHoc;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement ư;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement Sua_XoaMonHoc;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement7;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement8;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement9;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement17;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement18;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement19;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement20;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement In;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer container;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
