@@ -197,6 +197,12 @@
     <Compile Include="ThemSV.Designer.cs">
       <DependentUpon>ThemSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="TimKiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimKiem.Designer.cs">
+      <DependentUpon>TimKiem.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DangKyMonHoc.resx">
       <DependentUpon>DangKyMonHoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ThemSV.resx">
       <DependentUpon>ThemSV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimKiem.resx">
+      <DependentUpon>TimKiem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />

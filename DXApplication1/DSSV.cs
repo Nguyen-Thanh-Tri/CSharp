@@ -158,5 +158,15 @@ namespace DXApplication1
                 
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.DialogResult rs;
+            rs = MessageBox.Show("Bạn chắc chắn muốn thoát", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rs == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }

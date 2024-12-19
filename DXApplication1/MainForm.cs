@@ -135,5 +135,27 @@ namespace DXApplication1
             container.Controls.Add(f);
             f.Show();
         }
+
+        private void accordionControlElement19_Click(object sender, EventArgs e)
+        {
+            TimKiem f = new TimKiem();
+            f.TopLevel = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Fill;
+            container.Controls.Clear();
+            container.Controls.Add(f);
+            f.Show();
+        }
+
+        private void accordionControlElement14_Click(object sender, EventArgs e)
+        {
+            ThemGV f = new ThemGV();
+            f.TopLevel = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Fill;
+            container.Controls.Clear();
+            container.Controls.Add(f);
+            f.Show();
+        }
     }
 }

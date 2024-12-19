@@ -247,5 +247,18 @@ namespace DAL
             adapter.Fill(ds);
             return ds;
         }
+
+        public static DataTable TimKiem(string a)
+        {
+            SqlConnection conn = SqlConnectionData.Connect();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(@"SELECT ROW_NUMBER() OVER (ORDER BY PK_sMaSv) AS STT, PK_sMaSv AS [Mã sinh viên], sHovaTen AS [Họ và Tên], CASE WHEN sGioiTinh = '1' THEN 'Nam' ELSE N'Nữ' END AS [Giới tính], sLop AS [Lớp], sKhoa as [Khoa], sSoDienThoai AS [Số điện thoại], sDiaChi AS [Địa chỉ] FROM tbl_SinhVien WHERE deleted_at IS NULL AND (PK_sMaSv LIKE '%' + @key + '%' 
+          OR sHovaTen LIKE '%' + @key + '%');", conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            cmd.Parameters.AddWithValue("@key", a);
+            DataTable ds = new DataTable();
+            adapter.Fill(ds);
+            return ds;
+        }
     }
 }

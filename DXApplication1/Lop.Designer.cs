@@ -180,6 +180,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Lop";
             this.Text = "Lop";
+            this.Load += new System.EventHandler(this.Lop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

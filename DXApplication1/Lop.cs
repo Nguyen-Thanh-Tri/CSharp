@@ -115,5 +115,10 @@ namespace DXApplication1
                 cbbGiangVien.Text = dgvLop.Rows[e.RowIndex].Cells[3].Value.ToString();
             }
         }
+
+        private void Lop_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
