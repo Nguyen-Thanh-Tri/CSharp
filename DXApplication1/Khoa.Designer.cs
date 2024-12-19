@@ -44,7 +44,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("MV Boli", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(135, 151);
+            this.labelControl1.Location = new System.Drawing.Point(129, 142);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(147, 26);
             this.labelControl1.TabIndex = 0;
@@ -138,6 +138,8 @@
             this.Controls.Add(this.labelControl1);
             this.Name = "Khoa";
             this.Text = "Khoa";
+            this.Load += new System.EventHandler(this.Khoa_Load);
+            this.SizeChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhoa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

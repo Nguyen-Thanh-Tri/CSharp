@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountBLL.cs" />
+    <Compile Include="Admin.cs" />
     <Compile Include="DangKyMonHocBLL.cs" />
     <Compile Include="GiangVienBLL.cs" />
     <Compile Include="KhoaBLL.cs" />

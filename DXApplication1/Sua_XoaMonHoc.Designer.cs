@@ -210,6 +210,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Sua_XoaMonHoc";
             this.Text = "Sua_XoaMonHoc";
+            this.Load += new System.EventHandler(this.Sua_XoaMonHoc_Load);
             this.SizeChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonHoc)).EndInit();
             this.ResumeLayout(false);

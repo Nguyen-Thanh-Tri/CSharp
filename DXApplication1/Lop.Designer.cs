@@ -181,6 +181,7 @@
             this.Name = "Lop";
             this.Text = "Lop";
             this.Load += new System.EventHandler(this.Lop_Load);
+            this.TextChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

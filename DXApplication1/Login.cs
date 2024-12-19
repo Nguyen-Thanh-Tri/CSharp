@@ -15,6 +15,7 @@ namespace DXApplication1
 {
     public partial class Login : Form
     {
+        public string hehe;
         Account account = new Account();
         AccountBLL accountbll = new AccountBLL();
 
@@ -54,7 +55,7 @@ namespace DXApplication1
                     MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác");
                     return;
             }
-
+            hehe= txtUserName.Text;
             MessageBox.Show("Login Success");
             MainForm mainform = new MainForm();
             this.Hide();

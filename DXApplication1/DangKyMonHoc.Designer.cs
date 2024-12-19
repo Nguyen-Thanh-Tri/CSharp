@@ -247,6 +247,8 @@
             this.Controls.Add(this.label1);
             this.Name = "DangKyMonHoc";
             this.Text = "DangKyMonHoc";
+            this.Load += new System.EventHandler(this.DangKyMonHoc_Load);
+            this.SizeChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDKMH)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -7,7 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using DTO;
+using DAL;
 namespace DXApplication1
 {
     public partial class MainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
@@ -40,17 +41,6 @@ namespace DXApplication1
         private void Sua_Xoa_Click(object sender, EventArgs e)
         {
             Sua_XoaSV f = new Sua_XoaSV();
-            f.TopLevel = false;
-            f.FormBorderStyle = FormBorderStyle.None;
-            f.Dock = DockStyle.Fill;
-            container.Controls.Clear();
-            container.Controls.Add(f);
-            f.Show();
-        }
-
-        private void ThemGV_Click(object sender, EventArgs e)
-        {
-            ThemGV f = new ThemGV();
             f.TopLevel = false;
             f.FormBorderStyle = FormBorderStyle.None;
             f.Dock = DockStyle.Fill;
@@ -103,26 +93,41 @@ namespace DXApplication1
             f.Show();
         }
 
-        private void accordionControlElement12_Click(object sender, EventArgs e)
+        private void DKMH_Click(object sender, EventArgs e)
         {
-            DangKyMonHoc f =new DangKyMonHoc();
-            f.TopLevel = false;
-            f.FormBorderStyle = FormBorderStyle.None;
-            f.Dock = DockStyle.Fill;
-            container.Controls.Clear();
-            container.Controls.Add(f);
-            f.Show();
+            if (!string.IsNullOrEmpty(Staticvar.Username) && Staticvar.Username == "admin")
+            {
+                DangKyMonHoc f = new DangKyMonHoc();
+                f.TopLevel = false;
+                f.FormBorderStyle = FormBorderStyle.None;
+                f.Dock = DockStyle.Fill;
+                container.Controls.Clear();
+                container.Controls.Add(f);
+                f.Show();
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập", "Quản lý sinh viên", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void accordionControlElement10_Click(object sender, EventArgs e)
+
+        private void ThemGV_Click(object sender, EventArgs e)
         {
-            NhapDiem f = new NhapDiem();
-            f.TopLevel = false;
-            f.FormBorderStyle = FormBorderStyle.None;
-            f.Dock = DockStyle.Fill;
-            container.Controls.Clear();
-            container.Controls.Add(f);
-            f.Show();
+            if (!string.IsNullOrEmpty(Staticvar.Username) && Staticvar.Username == "admin")
+            {
+                ThemGV f = new ThemGV();
+                f.TopLevel = false;
+                f.FormBorderStyle = FormBorderStyle.None;
+                f.Dock = DockStyle.Fill;
+                container.Controls.Clear();
+                container.Controls.Add(f);
+                f.Show();
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập", "Quản lý sinh viên", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void In_Click(object sender, EventArgs e)
@@ -136,7 +141,8 @@ namespace DXApplication1
             f.Show();
         }
 
-        private void accordionControlElement19_Click(object sender, EventArgs e)
+
+        private void TimKiem_Click(object sender, EventArgs e)
         {
             TimKiem f = new TimKiem();
             f.TopLevel = false;
@@ -147,9 +153,9 @@ namespace DXApplication1
             f.Show();
         }
 
-        private void accordionControlElement14_Click(object sender, EventArgs e)
+        private void NhapDiem_Click(object sender, EventArgs e)
         {
-            ThemGV f = new ThemGV();
+            NhapDiem f = new NhapDiem();
             f.TopLevel = false;
             f.FormBorderStyle = FormBorderStyle.None;
             f.Dock = DockStyle.Fill;
@@ -157,5 +163,23 @@ namespace DXApplication1
             container.Controls.Add(f);
             f.Show();
         }
+
+        private void Tao_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Staticvar.Username) && Staticvar.Username == "admin")
+            {
+                AddAccount f = new AddAccount();
+            f.TopLevel = false;
+            f.FormBorderStyle = FormBorderStyle.None;                
+            f.Dock = DockStyle.Fill;
+            container.Controls.Clear();
+            container.Controls.Add(f);
+            f.Show();
+        }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập", "Quản lý sinh viên", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+}
     }
 }

@@ -190,6 +190,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ThemMonHoc";
             this.Text = "ThemMonHoc";
+            this.Load += new System.EventHandler(this.ThemMonHoc_Load);
             this.SizeChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonHoc)).EndInit();
             this.ResumeLayout(false);

@@ -322,6 +322,8 @@
             this.Controls.Add(this.dgvDiem);
             this.Name = "NhapDiem";
             this.Text = "NhapDiem";
+            this.Load += new System.EventHandler(this.NhapDiem_Load);
+            this.SizeChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiem)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

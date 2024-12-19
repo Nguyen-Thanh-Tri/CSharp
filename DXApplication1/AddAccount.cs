@@ -13,18 +13,16 @@ using System.Windows.Forms;
 
 namespace DXApplication1
 {
-    public partial class ThemGV : Form
+    public partial class AddAccount : Form
     {
-        GiangVien giangvien = new GiangVien();
         float firstWidth;
         float firstHeight;
-        public ThemGV()
+        public AddAccount()
         {
             InitializeComponent();
-            firstWidth = this.Size.Width;
-            firstHeight = this.Size.Height;
-            dgvGiangVien.DataSource = GetData.GIANGVIEN();
+            dgvTao.DataSource = GetData.Tim1();
         }
+
         private void AnaMenu_SizeChanged(object sender, EventArgs e)
         {
             float size1 = firstWidth > 0 ? this.Size.Width / firstWidth : 1;
@@ -45,23 +43,27 @@ namespace DXApplication1
                 control.Scale(scale);
             }
         }
-
-        private void btnThem_Click(object sender, EventArgs e)
+        private void btnfind_Click(object sender, EventArgs e)
         {
+            
             try
             {
-                giangvien.PK_sMaGiangVien = txtMaGiangVien.Text;
-                giangvien.sTenGiangVien = txtTenGiangVien.Text;
-                
-                if(txtMaGiangVien.Text == "" || txtTenGiangVien.Text == "")
+                string a = txtfind.Text.Trim();
+                if (string.IsNullOrEmpty(a))
                 {
                     MessageBox.Show("các trường không được trống", "Quản lý sinh viên", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    GiangVienBLL.ThemGV(giangvien);
-                    dgvGiangVien.DataSource = GetData.GIANGVIEN();
-                    MessageBox.Show("Thêm thành công", "Quản lý sinh viên", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var result = GetData.Tim(a);
+                    if (result == null || result.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        dgvTim.DataSource = result;
+                    }
                 }
             }
             catch
@@ -70,17 +72,30 @@ namespace DXApplication1
             }
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
+        private void btntao_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.DialogResult rs;
-            rs = MessageBox.Show("Bạn chắc chắn muốn thoát", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rs == System.Windows.Forms.DialogResult.Yes)
+            try
             {
-                this.Close();
+                string a = txtuser.Text.Trim();
+                string b = txtpass.Text.Trim();
+                if (txtuser.Text == "" || txtpass.Text =="")
+                {
+                    MessageBox.Show("các trường không được trống", "Quản lý sinh viên", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    Admin.CreateAccount(a, b);
+                    dgvTao.DataSource = GetData.Tim1();
+                    MessageBox.Show("Tài khoản đã được tạo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Lỗi CSDL :{ex.Message}", "Quản lý sinh viên", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void ThemGV_Load(object sender, EventArgs e)
+        private void AddAccount_Load(object sender, EventArgs e)
         {
             firstWidth = this.Size.Width;
             firstHeight = this.Size.Height;

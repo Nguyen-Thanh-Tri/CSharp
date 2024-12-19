@@ -16,6 +16,8 @@ namespace DXApplication1
     public partial class DangKyMonHoc : Form
     {
         sNhapDiem diem = new sNhapDiem();
+        float firstWidth;
+        float firstHeight;
         public DangKyMonHoc()
         {
             InitializeComponent();
@@ -29,7 +31,26 @@ namespace DXApplication1
             cbbGV.SelectedIndexChanged += new EventHandler(cbbGV_SelectedIndexChanged);
             LoadcbbMaGV();
         }
+        private void AnaMenu_SizeChanged(object sender, EventArgs e)
+        {
+            float size1 = firstWidth > 0 ? this.Size.Width / firstWidth : 1;
+            float size2 = firstHeight > 0 ? this.Size.Height / firstHeight : 1;
+            SizeF scale = new SizeF(size1, size2);
 
+            // Lưu lại kích thước mới
+            firstWidth = this.Size.Width;
+            firstHeight = this.Size.Height;
+
+            foreach (Control control in this.Controls)
+            {
+                float newFontSize = control.Font.Size * ((size1 + size2) / 2);
+                if (newFontSize > 0) // Đảm bảo kích thước phông chữ hợp lệ
+                {
+                    control.Font = new Font(control.Font.FontFamily, newFontSize);
+                }
+                control.Scale(scale);
+            }
+        }
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -259,6 +280,12 @@ namespace DXApplication1
                 cbbMaMH.SelectedIndexChanged += cbbMaMH_SelectedIndexChanged;
                 cbbTenMH.SelectedIndexChanged += cbbTenMH_SelectedIndexChanged;
             }
+        }
+
+        private void DangKyMonHoc_Load(object sender, EventArgs e)
+        {
+            firstWidth = this.Size.Width;
+            firstHeight = this.Size.Height;
         }
     }
 }

@@ -104,6 +104,8 @@
             this.Controls.Add(this.label1);
             this.Name = "TimKiem";
             this.Text = "TimKiem";
+            this.Load += new System.EventHandler(this.TimKiem_Load);
+            this.SizeChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

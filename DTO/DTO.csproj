@@ -98,6 +98,7 @@
     <Compile Include="SinhVien.cs" />
     <Compile Include="sLop.cs" />
     <Compile Include="sNhapDiem.cs" />
+    <Compile Include="Staticvar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

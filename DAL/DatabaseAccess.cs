@@ -9,6 +9,7 @@ using System.Data;
 using System.Runtime.CompilerServices;
 namespace DAL
 {
+   
     public class SqlConnectionData
     {
         //Tạo kết nối vs Database
@@ -24,6 +25,7 @@ namespace DAL
         public static string CheckLoginDTO(Account account)
         {
             string user = null;
+            string role = null;
             //Connect tới CSDL
             SqlConnection conn = SqlConnectionData.Connect();
             conn.Open();
@@ -39,7 +41,9 @@ namespace DAL
                 while (reader.Read())
                 {
                     user = reader.GetString(0);
+                    role =reader.GetString(1);
                 }
+                Staticvar.Username= role;
                 reader.Close();
                 conn.Close();
             } else
@@ -175,8 +179,9 @@ namespace DAL
         {
             SqlConnection conn = SqlConnectionData.Connect();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("SELECT sMaMH, sTenMH FROM tbl_Diem ORDER BY sMaMH, sTenMH", conn);
+            SqlCommand cmd = new SqlCommand("SELECT sMaMH, sTenMH FROM tbl_Diem WHERE sMaGiangVien =@MaGV ORDER BY sMaMH, sTenMH", conn);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            cmd.Parameters.AddWithValue("@MaGV", Staticvar.Username);
             DataTable ds = new DataTable();
             adapter.Fill(ds);
             return ds;
@@ -256,6 +261,28 @@ namespace DAL
           OR sHovaTen LIKE '%' + @key + '%');", conn);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             cmd.Parameters.AddWithValue("@key", a);
+            DataTable ds = new DataTable();
+            adapter.Fill(ds);
+            return ds;
+        }
+
+        public static DataTable Tim(string a)
+        {
+            SqlConnection conn = SqlConnectionData.Connect();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM tbl_taikhoan WHERE sUserName LIKE @key ", conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            cmd.Parameters.AddWithValue("@key", "%" +a+"%");
+            DataTable ds = new DataTable();
+            adapter.Fill(ds);
+            return ds;
+        }
+        public static DataTable Tim1()
+        {
+            SqlConnection conn = SqlConnectionData.Connect();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_taikhoan" , conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable ds = new DataTable();
             adapter.Fill(ds);
             return ds;

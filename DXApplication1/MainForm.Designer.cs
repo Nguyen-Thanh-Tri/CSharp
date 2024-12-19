@@ -47,6 +47,7 @@
             this.In = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement11 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement12 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement14 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
@@ -57,7 +58,7 @@
             this.container = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControlElement13 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement14 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.Tao = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -122,7 +123,7 @@
             this.accordionControlElement10.Name = "accordionControlElement10";
             this.accordionControlElement10.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement10.Text = "Nhâp điểm";
-            this.accordionControlElement10.Click += new System.EventHandler(this.accordionControlElement10_Click);
+            this.accordionControlElement10.Click += new System.EventHandler(this.NhapDiem_Click);
             // 
             // accordionControlElement6
             // 
@@ -184,7 +185,7 @@
             this.accordionControlElement19.Name = "accordionControlElement19";
             this.accordionControlElement19.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement19.Text = "Tìm kiếm";
-            this.accordionControlElement19.Click += new System.EventHandler(this.accordionControlElement19_Click);
+            this.accordionControlElement19.Click += new System.EventHandler(this.TimKiem_Click);
             // 
             // In
             // 
@@ -197,7 +198,8 @@
             // 
             this.accordionControlElement11.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement12,
-            this.accordionControlElement14});
+            this.accordionControlElement14,
+            this.Tao});
             this.accordionControlElement11.Expanded = true;
             this.accordionControlElement11.Name = "accordionControlElement11";
             this.accordionControlElement11.Text = "FOR ADMIN FAKE DATA";
@@ -207,7 +209,14 @@
             this.accordionControlElement12.Name = "accordionControlElement12";
             this.accordionControlElement12.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement12.Text = "Đăng ký môn học";
-            this.accordionControlElement12.Click += new System.EventHandler(this.accordionControlElement12_Click);
+            this.accordionControlElement12.Click += new System.EventHandler(this.DKMH_Click);
+            // 
+            // accordionControlElement14
+            // 
+            this.accordionControlElement14.Name = "accordionControlElement14";
+            this.accordionControlElement14.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement14.Text = "Thêm giảng viên";
+            this.accordionControlElement14.Click += new System.EventHandler(this.ThemGV_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -299,12 +308,12 @@
             this.accordionControlElement5.Name = "accordionControlElement5";
             this.accordionControlElement5.Text = "Giảng Viên";
             // 
-            // accordionControlElement14
+            // Tao
             // 
-            this.accordionControlElement14.Name = "accordionControlElement14";
-            this.accordionControlElement14.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement14.Text = "Thêm giảng viên";
-            this.accordionControlElement14.Click += new System.EventHandler(this.accordionControlElement14_Click);
+            this.Tao.Name = "Tao";
+            this.Tao.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.Tao.Text = "Tạo tài khoản";
+            this.Tao.Click += new System.EventHandler(this.Tao_Click);
             // 
             // MainForm
             // 
@@ -357,5 +366,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement11;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement12;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement14;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement Tao;
     }
 }

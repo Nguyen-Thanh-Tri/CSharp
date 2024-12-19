@@ -32,15 +32,21 @@ namespace DXApplication1
 
         private void AnaMenu_SizeChanged(object sender, EventArgs e)
         {
-            float size1 = this.Size.Width / firstWidth;
-            float size2 = this.Size.Height / firstHeight;
+            float size1 = firstWidth > 0 ? this.Size.Width / firstWidth : 1;
+            float size2 = firstHeight > 0 ? this.Size.Height / firstHeight : 1;
             SizeF scale = new SizeF(size1, size2);
+
+            // Lưu lại kích thước mới
             firstWidth = this.Size.Width;
             firstHeight = this.Size.Height;
 
             foreach (Control control in this.Controls)
             {
-                control.Font = new Font(control.Font.FontFamily, control.Font.Size * ((size1 + size2) / 2));
+                float newFontSize = control.Font.Size * ((size1 + size2) / 2);
+                if (newFontSize > 0) // Đảm bảo kích thước phông chữ hợp lệ
+                {
+                    control.Font = new Font(control.Font.FontFamily, newFontSize);
+                }
                 control.Scale(scale);
             }
         }
@@ -128,6 +134,12 @@ namespace DXApplication1
             {
                 this.Close();
             }
+        }
+
+        private void ThemMonHoc_Load(object sender, EventArgs e)
+        {
+            firstWidth = this.Size.Width;
+            firstHeight = this.Size.Height;
         }
     }
 }

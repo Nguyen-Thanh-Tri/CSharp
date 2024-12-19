@@ -272,6 +272,7 @@
             this.Controls.Add(this.dgvSinhVien);
             this.Name = "Sua_XoaSV";
             this.Text = "Sua_XoaSV";
+            this.Load += new System.EventHandler(this.Sua_XoaSV_Load);
             this.SizeChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).EndInit();
             this.panel1.ResumeLayout(false);

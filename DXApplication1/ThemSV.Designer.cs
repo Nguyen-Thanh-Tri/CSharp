@@ -300,6 +300,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ThemSV";
             this.Text = "QuanLySinhVien";
+            this.Load += new System.EventHandler(this.ThemSV_Load);
             this.SizeChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             this.GioiTinh.ResumeLayout(false);
             this.GioiTinh.PerformLayout();

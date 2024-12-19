@@ -126,6 +126,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ThemGV";
             this.Text = "ThemGV";
+            this.Load += new System.EventHandler(this.ThemGV_Load);
             this.SizeChanged += new System.EventHandler(this.AnaMenu_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiangVien)).EndInit();
             this.ResumeLayout(false);
